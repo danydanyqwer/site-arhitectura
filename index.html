@@ -6,38 +6,93 @@
   <title>Proiectare Construcții - Vlad Dragoș</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f10;
+      color: #e5e5e5;
+      scroll-behavior: smooth;
     }
+
     header {
+      position: relative;
       background: url('https://picsum.photos/1920/600?blur') no-repeat center center/cover;
       color: white;
       text-align: center;
-      padding: 120px 20px;
+      padding: 150px 20px;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+    header h1, header p, header a {
+      position: relative;
+      z-index: 1;
     }
     header h1 {
-      font-size: 3rem;
-      font-weight: bold;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      letter-spacing: 1px;
     }
     header p {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      opacity: 0.9;
     }
+
+    .btn-primary {
+      background-color: #1a73e8;
+      border: none;
+      transition: 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      color: #64b5f6;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
     .services i {
       font-size: 3rem;
-      color: #0d6efd;
+      color: #64b5f6;
       margin-bottom: 10px;
+      transition: 0.3s;
     }
+
+    .services .col-md-3 {
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 30px 20px;
+      transition: 0.4s;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .services .col-md-3:hover {
+      transform: translateY(-5px);
+      background: #232323;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    }
+    .services .col-md-3:hover i {
+      color: #2196f3;
+      transform: scale(1.1);
+    }
+
     .portfolio img {
       width: 100%;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      transition: 0.4s ease;
     }
-    footer {
-      background: #222;
-      color: #bbb;
-      text-align: center;
-      padding: 30px 10px;
+    .portfolio img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.8);
     }
 
     .fixed-height-img {
@@ -47,50 +102,49 @@
     }
 
     .custom-arrow {
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.5);
       border: none;
-      width: 50px;
-      height: 50px;
-      top: 50%;
-      transform: translateY(-50%);
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
       color: white;
       font-size: 2rem;
       transition: 0.3s;
-      z-index: 10;
     }
-
     .custom-arrow:hover {
-      background: rgba(0, 0, 0, 0.7);
-      color: #0d6efd;
+      background: rgba(100, 181, 246, 0.8);
+      color: black;
     }
 
     .carousel-indicators button {
-      background-color: #0d6efd;
+      background-color: #64b5f6;
       width: 10px;
       height: 10px;
       border-radius: 50%;
     }
 
-    /* Ușor efect de previzualizare laterală (blur, opacity) */
-    #carouselPortfolio .carousel-inner::before,
-    #carouselPortfolio .carousel-inner::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 80px;
-      height: 100%;
-      z-index: 2;
-      pointer-events: none;
+    #contact {
+      background-color: #161616;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
-    #carouselPortfolio .carousel-inner::before {
-      left: 0;
-      background: linear-gradient(to right, rgba(0,0,0,0.3), transparent);
+
+    footer {
+      background: #0b0b0c;
+      color: #aaa;
+      text-align: center;
+      padding: 40px 10px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.9rem;
     }
-    #carouselPortfolio .carousel-inner::after {
-      right: 0;
-      background: linear-gradient(to left, rgba(0,0,0,0.3), transparent);
+
+    img.shadow {
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
     }
+
+    .container p {
+      color: #ccc;
+    }
+
   </style>
 </head>
 <body>
@@ -107,7 +161,7 @@
       <div class="col-md-6">
         <h2>Despre mine</h2>
         <p>Sunt <strong>ing. Vlad Dragoș</strong>, specializat în proiectare construcții civile, industriale și agricole. Ofer servicii complete de arhitectură, infrastructură și suprastructură de rezistență, documentații tehnice (DTAC, PTh), evaluări și consultanță pentru investiții.</p>
-        <p>Experiența acumulată în domeniu îmi permite să ofer soluții sigure, eficiente și adaptate cerințelor clienților.</p>
+        <p>Experiența acumulată îmi permite să ofer soluții sigure, eficiente și adaptate cerințelor clienților.</p>
       </div>
       <div class="col-md-6">
         <img src="poze/info.jpg" alt="Despre mine" class="img-fluid rounded shadow">
@@ -116,7 +170,7 @@
   </section>
 
   <!-- Servicii -->
-  <section class="bg-light py-5">
+  <section class="py-5">
     <div class="container text-center">
       <h2 class="mb-4">Servicii</h2>
       <div class="row g-4 services">
@@ -183,20 +237,20 @@
     </div>
   </section>
 
-  <section id="contact" class="bg-light py-5">
+  <!-- Contact -->
+  <section id="contact" class="py-5">
     <div class="container">
       <h2 class="text-center mb-4">Contact</h2>
       <div class="row justify-content-center">
         <div class="col-md-6 text-center">
           <p class="mb-2">Telefon: <strong>0724 874 964</strong></p>
           <p>Email: <strong>vladdragos@yahoo.com</strong></p>
-          <a href="mailto:vlddragos@yahoo.com" class="btn btn-primary mt-3">Trimite un Email</a>
+          <a href="mailto:vladdragos@yahoo.com" class="btn btn-primary mt-3">Trimite un Email</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Ing. Vlad Dragoș - Proiectare Construcții</p>
   </footer>
